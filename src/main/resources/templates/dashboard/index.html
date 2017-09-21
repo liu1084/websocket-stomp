@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="context-path" th:content="@{/}"/>
+	<title>AMQP DEMO</title>
+</head>
+<body>
+
+<h1>timestamp from amqp server:</h1>
+<div id="timestamp"></div>
+<img src="" id="target"/>
+<script th:src="@{/node_modules/sockjs-client/dist/sockjs.js}"></script>
+<script th:src="@{/node_modules/stompjs/lib/stomp.js}"></script>
+<script th:src="@{/node_modules/jquery/dist/jquery.js}"></script>
+<script th:src="@{/node_modules/moment/moment.js}"></script>
+
+<script th:inline="javascript">
+	var contextPath = $('meta[name="context-path"]').attr('content');
+	if (/\/$/.test(contextPath)){
+		contextPath = contextPath.substr(0, contextPath.length - 1);
+	}
+	console.log(contextPath);
+</script>
+<script th:src="@{/app/client/subscribe.js}"></script>
+</body>
+</html>
